@@ -8,20 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class MainFragment : Fragment() {
+class FirstFragment : Fragment() {
 
-    val TAG = MainFragment::class.simpleName;
+    val TAG = FirstFragment::class.simpleName;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+//        return super.onCreateView(inflater, container, savedInstanceState)
 
         Log.d(TAG, "onCreateView!")
 
-        var view = inflater.inflate(R.layout.view_fragment_main, container, false)
+        var view = inflater.inflate(R.layout.view_fragment_first, container, false)
 
         return view
     }
