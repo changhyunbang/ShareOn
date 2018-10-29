@@ -1,3 +1,5 @@
+package com.rooms.kshare.shareon
+
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -7,9 +9,9 @@ import android.view.ViewGroup
 import com.rooms.kshare.shareon.R
 import kotlinx.android.synthetic.main.result_list_item.view.*
 
-class SearchAdapter(val context : Context, val items : ArrayList<String>) : RecyclerView.Adapter<ViewHolder>() {
+class ItemsAdapter(val context : Context, val items : ArrayList<String>) : RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    val TAG = SearchAdapter::class.simpleName;
+    val TAG = ItemsAdapter::class.simpleName;
 
     init {
         Log.d(TAG, "init!")
@@ -40,9 +42,9 @@ class SearchAdapter(val context : Context, val items : ArrayList<String>) : Recy
 
         return items.size
     }
-}
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-    // Holds the TextView that will add each animal to
-    val tvAnimalType = view.TV_ITEM_NAME
+    class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+        // Holds the TextView that will add each animal to
+        val tvAnimalType = view.TV_ITEM_NAME
+    }
 }
