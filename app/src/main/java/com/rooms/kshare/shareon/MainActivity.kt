@@ -1,12 +1,14 @@
 package com.rooms.kshare.shareon
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.util.Log
-import android.widget.RadioGroup
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import com.rooms.kshare.shareon.fragment.FgActivity
+import com.rooms.kshare.shareon.mvp.view.MvpActivity
+import com.rooms.kshare.shareon.mvvm.view.MvvmActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,42 +20,51 @@ class MainActivity : AppCompatActivity() {
 
     val TAG = MainActivity::class.simpleName;
 
+    val items : ArrayList<String> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // [Kotlin] Direct use viewId instade of FindViewId
-        BTN_HELLO.setOnClickListener {
-            Log.d(TAG, "hello btn clicked!")
-            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show()
-        }
-        
-        RDG_GROUP.setOnCheckedChangeListener { group, checkedId ->
-            Log.d(TAG, "setOnCheckedChangeListener checkedId : " + checkedId)
+        addItems()
 
-            // [Kotlin] when instade of switch
-            when (checkedId) {
-                R.id.RDB_FIRST -> replaceFragment(R.id.LL_CONTAINER, FirstFragment())
-                R.id.RDB_SECOND -> replaceFragment(R.id.LL_CONTAINER, SecondFragment())
-                else -> Log.d(TAG, "setOnCheckedChangeListener NONE!!")
-            }
-        }
+        var context: Context? = this.applicationContext
+        val rv_item_list = findViewById<android.support.v7.widget.RecyclerView>(R.id.rv_item_list)
 
-        RDG_GROUP.check(R.id.RDB_FIRST)
+        if (context != null){
+            rv_item_list.layoutManager = LinearLayoutManager(context)
+            rv_item_list.adapter = ItemsAdapter(context, items)
+
+            rv_item_list.addOnItemTouchListener(RecyclerItemClickListener(
+                    context,
+                    rv_item_list,
+                    object : RecyclerItemClickListener.OnItemClickListener {
+                        override fun onItemClick(view: View, position: Int) {
+
+                            when (position) {
+                                0 -> {
+                                    startActivity(Intent(context, MvpActivity::class.java))
+                                }
+                                1 -> {
+                                    startActivity(Intent(context, MvvmActivity::class.java))
+                                }
+                                2 -> {
+                                    startActivity(Intent(context, FgActivity::class.java))
+                                }
+                            }
+                        }
+
+                        override fun onLongItemClick(view: View?, position: Int) {
+
+                        }
+                    }
+            ))
+        }
     }
 
-    fun replaceFragment(containerViewId: Int , fragment: Fragment?) {
-
-        Log.d(TAG, "replaceFragment!")
-
-        val srcFragment = fragment
-        val manager = supportFragmentManager
-
-        val transaction = manager.beginTransaction()
-
-        transaction.replace(containerViewId, srcFragment)
-        transaction.addToBackStack(null)
-
-        transaction.commit()
+    fun addItems() {
+        items.add("01.MVP")
+        items.add("02.MVVP")
+        items.add("03.Fragment")
     }
 }

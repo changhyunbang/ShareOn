@@ -16,6 +16,8 @@ class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.activity_intro)
+
         val mainVar = MainActivity.pubVar
         val mainTag = MainActivity::TAG
 
@@ -25,6 +27,7 @@ class IntroActivity : AppCompatActivity() {
         handler.postDelayed({
             var intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
+            finish()
         }, CHANGE_DELAY.toLong())
     }
 }

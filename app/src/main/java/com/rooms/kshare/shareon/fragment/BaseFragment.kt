@@ -1,4 +1,4 @@
-package com.rooms.kshare.shareon
+package com.rooms.kshare.shareon.fragment
 
 import android.content.Context
 import android.support.v4.app.Fragment

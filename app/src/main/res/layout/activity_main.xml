@@ -20,34 +20,8 @@
         android:layout_height="wrap_content"
         android:text="Hello Kotlin"/>
 
-    <RadioGroup
-        android:id="@+id/RDG_GROUP"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_item_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checkedButton="@+id/RDB_SECOND"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/RDB_FIRST"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="First"/>
-        <RadioButton
-            android:id="@+id/RDB_SECOND"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="Second"/>
-    </RadioGroup>
-
-    <LinearLayout
-        android:id="@+id/LL_CONTAINER"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="#c1cfba">
-    </LinearLayout>
+        android:layout_height="match_parent" />
 </LinearLayout>

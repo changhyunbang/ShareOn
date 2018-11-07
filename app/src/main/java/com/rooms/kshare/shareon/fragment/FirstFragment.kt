@@ -1,4 +1,4 @@
-package com.rooms.kshare.shareon
+package com.rooms.kshare.shareon.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.view_fragment_first.*
+import com.rooms.kshare.shareon.ItemsAdapter
+import com.rooms.kshare.shareon.R
 
 class FirstFragment : BaseFragment() {
 
@@ -33,44 +34,6 @@ class FirstFragment : BaseFragment() {
 
         var view = inflater.inflate(R.layout.view_fragment_first, container, false)
 
-        addItems()
-
-        var context: Context? = getContext()
-        val rv_item_list = view.findViewById<android.support.v7.widget.RecyclerView>(R.id.rv_item_list)
-
-        if (context != null){
-            rv_item_list.layoutManager = LinearLayoutManager(context)
-
-            rv_item_list.adapter = ItemsAdapter(context, items)
-        }
-
         return view
-    }
-
-    fun addItems() {
-
-        items.add("dog")
-        items.add("cat")
-        items.add("owl")
-        items.add("cheetah")
-        items.add("raccoon")
-        items.add("bird")
-        items.add("snake")
-        items.add("lizard")
-        items.add("hamster")
-        items.add("bear")
-        items.add("lion")
-        items.add("tiger")
-        items.add("horse")
-        items.add("frog")
-        items.add("fish")
-        items.add("shark")
-        items.add("turtle")
-        items.add("elephant")
-        items.add("cow")
-        items.add("beaver")
-        items.add("bison")
-        items.add("porcupine")
-        items.add("rat")
     }
 }

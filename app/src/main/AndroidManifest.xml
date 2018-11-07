@@ -17,8 +17,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"/>
+
+        <activity android:name=".mvp.view.MvpActivity"/>
+        <activity android:name=".mvvm.view.MvvmActivity"/>
+        <activity android:name=".fragment.FgActivity"/>
+
     </application>
 
 </manifest>
